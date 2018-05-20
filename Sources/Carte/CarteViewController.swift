@@ -25,6 +25,7 @@ import UIKit
 
 open class CarteViewController: UITableViewController {
   open lazy var items = Carte.items
+  open var configureCell: ((UITableViewCell) -> Void)?
   open var configureDetailViewController: ((CarteDetailViewController) -> Void)?
 
   override open func viewDidLoad() {
@@ -64,6 +65,7 @@ extension CarteViewController {
     cell.textLabel?.text = item.displayName
     cell.detailTextLabel?.text = item.licenseName
     cell.accessoryType = .disclosureIndicator
+    self.configureCell?(cell)
     return cell
   }
 

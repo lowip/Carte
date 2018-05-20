@@ -25,6 +25,7 @@ import UIKit
 
 open class CarteViewController: UITableViewController {
   open lazy var items = Carte.items
+  open var configureSelf: ((CarteViewController) -> Void)?
   open var configureCell: ((UITableViewCell) -> Void)?
   open var configureDetailViewController: ((CarteDetailViewController) -> Void)?
 
@@ -32,6 +33,7 @@ open class CarteViewController: UITableViewController {
     super.viewDidLoad()
     self.title = NSLocalizedString("Open Source Licenses", comment: "Open Source Licenses")
     self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    self.configureSelf?(self)
   }
 
   open override func viewWillAppear(_ animated: Bool) {
